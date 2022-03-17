@@ -1,0 +1,3 @@
+D:/我的空间/北航/c语言/cmake-build-debug/CMakeFiles/c.dir
+D:/我的空间/北航/c语言/cmake-build-debug/CMakeFiles/edit_cache.dir
+D:/我的空间/北航/c语言/cmake-build-debug/CMakeFiles/rebuild_cache.dir
