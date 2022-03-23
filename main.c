@@ -1,15 +1,13 @@
 #include <stdio.h>
-int main()
-{int n;
-    scanf("%d",&n);
-    for (int i = 1; i <=n ; ++i) {
-        for (int j = 0; j <n-i ; ++j) {
-            printf(" ");
-        }
-        for (int j1 = 0; j1 < 2*n; ++j1) {
-            printf("*");
+int mian123(int a,int b)
+{
+    if (b==0) return (a>0)?a:-a;
+    return mian123(b,a%b);
+}
 
-        }
-        printf("\n");
-    }
+int main()
+{
+    int a,b;
+    scanf("%d%d",&a,&b);
+    printf("%d",mian123(a,b));
 }
