@@ -13,8 +13,9 @@ printf()
  %g： － 以%f，%e中较短的输出宽度输出单、双精度实数；     double
  %c： － 输出单个字符；                              char
  %s： － 输出字符串。                                char*
-  %lld  -以十进制方式输入长整型 （linux系统）         long long
+%lld  -以十进制方式输入长整型 （linux系统）         long long
  %I64d -以十进制方式输入长整型 （windows系统）       long long
+ %llu  以十进制方式输出unsigned long long        unsigned long long
  4.完整的字段说明序列
  %[flags] [width] [.precision] type
  flags 格式标志 width字段宽度 .precision精度 type类型(必填)
@@ -45,6 +46,7 @@ scanf()
  %lf：－ 双精度实数；                              double
  %c： － 输出单个字符；                           char
  %s： － 输出字符串。
+ %llu  以十进制方式输入unsigned long long        unsigned long long
  空格  -读取接下来的空格，并作废（用于在读入字符前清除空格）（格式化字符串末尾不能用空格和\n）
  %lld  -以十进制方式输入长整型 （linux系统）         long long
  %I64d -以十进制方式输入长整型 （windows系统）       long long

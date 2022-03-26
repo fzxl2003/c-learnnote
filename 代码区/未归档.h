@@ -10,6 +10,10 @@
 
 //fabs()   浮点数绝对值
 //abs()    整数绝对值
+//memcpy()函数
+   //使用<string.h>函数库中的memcpy函数可以将一个float类型变量逐比特地复制进一个int类型变量
+        //具体用法可以参考如下代码：
+    //memcpy(&da, &a, 4); // 将float类型变量a逐比特复制进int类型变量da
 
 
 /*
