@@ -41,6 +41,30 @@
          void *dest为被复制数据的地址  const void *src为数据原地址   size_t count为需要复制的字节数
     2.实例：上述实例等价于memcpy(b,a,sizeof(a));
 
+3.数组元素查找  见数组元素二分查找
+4.数组排序     见数组排序
+  函数qsort()
+  1.库： stdlib.h
+  2.声明：void qsort(void *base, size_t nitems, size_t size, int (*compar)(const void *, const void*))
+  3.参数：
+    base -- 指向要排序的数组的第一个元素的指针。
+    nitems -- 由 base 指向的数组中元素的个数。
+    size -- 数组中每个元素的大小，以字节为单位。
+    compar -- 用来比较两个元素的函数
+    比如：qsort(values, 5, sizeof(int), cmpfunc);
+     values为要排序的数组名，5代表要排前五个元素，sizeof(int)代表元素大小，cmpfunc为附加函数
+ 4.附加函数cmpfunc
+ 升序排列
+ int cmpfunc (const void * a, const void * b)
+    {return ( *(int*)a - *(int*)b );}
+ 降序排列
+ int cmpfunc1 (const void * a, const void * b)
+    {return ( *(int*)b - *(int*)a );}
+ 5.实例见qsort.h
+ 6.平均速度 O(nlogn)
+
+
+
  数组作为函数使用
 1.参数表中如果包含数组，在该参数后添加[]即可，无需说明该数组元素数量
 2.函数内部不能从参数本身直接判断数组大小，如作为参数的数组的大小不确定，应当使用附加参数说明数组的大小

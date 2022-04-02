@@ -1,60 +1,27 @@
-#include <stdio.h>
-int a[100000]={0};
-void mian3(int num,int i)
-{
-    for(int j=31;j>=0;j--)
-    {if ((num>>j)&1)
-            a[i+j]=1;
-        else a[i+j]=0;}
-}
-
-
-int main() {
-    int n,a0,c,newnum;char b;int start,now,now1,now2;
-    while ((scanf("%d",&n))!=EOF)
-    {
-        for (int i=n-1;i>=0;i--)
-        { scanf("%d",&a0);
-            a[i]=a0;
-            //mian3(a0, i*32);
-        }
-        getchar();
-        scanf("%c%d",&b,&c);
-        c=c%(n*32);
-        if (b=='l'){
-            for (int o=n-1;o>=0;o--)
-            {newnum=0;
-                start=(o*32-c)%(n*32);
-                for (int ll=0;ll<32;ll++)
-                {
-                    now=(start+ll)%(n*32);
-                    if (now<0) now=n*32+now;
-                    now1=now/32;
-                    now2=now-now1*32;
-                    newnum+=(((a[now1]&(1<<now2))>>now2)<<ll);
-                }
-                printf("%d ",newnum);
-            }
-
-
-        }
-        else {
-            for (int o=n-1;o>=0;o--)
-            {newnum=0;
-                start=(o*32+c)%(n*32);
-                for (int ll=0;ll<32;ll++)
-                {
-                    now=(start+ll)%(n*32);
-                    if (now<0) now=n*32+now;
-                    now1=now/32;
-                    now2=now-now1*32;
-                    newnum+=(((a[now1]&(1<<now2))>>now2)<<ll);
-                }
-                printf("%d ",newnum);
-            }}printf("\n");
+#include<stdio.h>
+int lower_bound(int a[], int lo, int hi, int val) {
+    if (val > a[hi]) return hi + 1;
+    int mi = 0;
+    while (lo < hi) {
+        mi = (lo + hi) >> 1;
+        if (a[mi] < val) lo = mi + 1;
+        else hi = mi;
     }
-
-
-
-    //while ((scanf()))
+    return lo;
+}
+int n, m;
+int a[1919810], x;
+int pos;
+int main() {
+    scanf("%d%d", &n, &m);
+    for (int i = 1; i <= n; ++i)
+        scanf("%d", &a[i]);//从a[1]开始读入 读到a[n]
+    while (m--) {
+        scanf("%d", &x);
+        pos = lower_bound(a, 1, n, x);//下界二分查找的下标 注意起点是1 终点是n
+//如果是从a[0]读到a[n-1] 那么上面的函数就应该传入0和n-1才对
+        if (a[pos] == x)
+            printf("%d\n", pos);//相等:我们找到了所求解
+        else printf("-1\n");//大于:要查找的值没有出现过
+    }
 }

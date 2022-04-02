@@ -17,7 +17,7 @@ x=（int)（(f+ DEALT)*100);，其中DEALT是一个略大于数据精度误差�
 2.数组整体复制函数
  memcpy(b,a,sizeof(a));   将a数组复制到b数组中，sizeof(a)可用n代替 表示复制个数
 
-
+3.math.h中的乘幂函数pow(double,double)不能输出过大但小于long long的数
 
 
 
