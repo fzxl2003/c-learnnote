@@ -1,27 +1,39 @@
 #include<stdio.h>
-int lower_bound(int a[], int lo, int hi, int val) {
-    if (val > a[hi]) return hi + 1;
-    int mi = 0;
-    while (lo < hi) {
-        mi = (lo + hi) >> 1;
-        if (a[mi] < val) lo = mi + 1;
-        else hi = mi;
+int arr[25];//arr记录每⼀⾏⼤师的坐标
+int all;
+int total;//合法数
+int isPlaceOK(int n, int c)//检查位置是否可以放，c是将要放置的位置
+{
+    int i;
+    for(i=1; i<=n-1; ++i)
+    {
+        if (arr[i] == c || arr[i]-i == c-n || arr[i]+i == c+n)//a[i] == c放在同⼀列；a[i]-+ i = c -+ n 在对⻆线上
+        {
+            return 0;
+        }
     }
-    return lo;
+    return 1;
 }
-int n, m;
-int a[1919810], x;
-int pos;
-int main() {
-    scanf("%d%d", &n, &m);
-    for (int i = 1; i <= n; ++i)
-        scanf("%d", &a[i]);//从a[1]开始读入 读到a[n]
-    while (m--) {
-        scanf("%d", &x);
-        pos = lower_bound(a, 1, n, x);//下界二分查找的下标 注意起点是1 终点是n
-//如果是从a[0]读到a[n-1] 那么上面的函数就应该传入0和n-1才对
-        if (a[pos] == x)
-            printf("%d\n", pos);//相等:我们找到了所求解
-        else printf("-1\n");//大于:要查找的值没有出现过
+void addMaster(int n)//n为当前⾏
+{
+    if(n>all)
+    {
+        total++;
+        return;
     }
+    int i;
+    for (i=1; i<=all; ++i)//i从第1列到第all列遍历
+    {
+        if (isPlaceOK(n, i)){
+            arr[n]=i;//如果可以放置，就把⼤师放在第n⾏第i列
+            addMaster(n+1);
+        }
+    }
+}
+int main()
+{
+    total=0;
+    scanf("%d",&all);
+    addMaster(1);//从第⼀⾏开始放置
+    printf("%d\n",total);
 }
