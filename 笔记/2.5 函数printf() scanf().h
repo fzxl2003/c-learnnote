@@ -13,6 +13,8 @@ printf()
  %g： － 以%f，%e中较短的输出宽度输出单、双精度实数；     double
  %c： － 输出单个字符；                              char
  %s： － 输出字符串。                                char*
+//%s对应的参数实质上是字符串第一个字符对应的指针，当printf输出到'\0'时停止输出该字符串
+  详见字符串和字符数组.h
 %lld  -以十进制方式输入长整型 （linux系统）         long long
  %I64d -以十进制方式输入长整型 （windows系统）       long long
  %llu  以十进制方式输出unsigned long long        unsigned long long
