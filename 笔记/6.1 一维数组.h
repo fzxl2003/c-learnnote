@@ -42,7 +42,7 @@
     2.实例：上述实例等价于memcpy(b,a,sizeof(a));
 
 3.数组元素查找  见数组元素二分查找
-4.数组排序     见数组排序
+4.数组排序//仅适用于int数组     见数组排序
   函数qsort()
   1.库： stdlib.h
   2.声明：void qsort(void *base, size_t nitems, size_t size, int (*compar)(const void *, const void*))
@@ -62,6 +62,8 @@
     {return ( *(int*)b - *(int*)a );}
  5.实例见qsort.h
  6.平均速度 O(nlogn)
+5.冒泡排序（适用于所有数组）（但效率低）
+ 见冒泡排序法.h
 
 
 
