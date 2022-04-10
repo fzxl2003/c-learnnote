@@ -11,7 +11,7 @@
  H zhn の 字符串              不会//参考代码(经典)组合数取模【逆元】.h
  I 方阵数局简单版              //二维数组预习题
  J 阿水排排坐                 冒泡排序法
- K Pure Brightness          //注意特殊点
+ K Pure Brightness          //注意输入问题
 
 
 
