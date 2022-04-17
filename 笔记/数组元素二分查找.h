@@ -1,4 +1,19 @@
 /*
+ 数组线性查找
+ 1.实例
+  int find(int x[],int key,int size)
+  {
+     for (int j=0;j<size;j++)
+     {
+           if (x[j]==key)
+           return j;
+     }
+     return -1;
+  }
+
+
+
+ 数组二分查找
  一.函数bsearch()
  1.函数声明:
    void *bsearch(const void *key, const void *base, size_t nitems, size_t size, int (*compar)(const void *, const void *))

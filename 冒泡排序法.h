@@ -9,25 +9,32 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-int cmpfunc (const void * a, const void * b)
-{return ( *(int*)a - *(int*)b );}
+
+void maopao(int a[],int n)  //升序
+{int temp,aa=0;
+    for (int i = 0; i < n-1; ++i) {
+        aa=0;
+        for (int j = 0; j < n-1-i; ++j) {
+            if (a[j]>a[j+1])
+            {temp=a[j+1];
+                aa=1;
+                a[j+1]=a[j];
+                a[j]=temp;
+            }
+        }
+        if (aa==0) break;
+    }
+}
 int main()
 {
-    int n;double a[1002]={0};
+    int n;int a[1002]={0};int i;
     scanf("%d",&n);
-    for (int i = 0; i <n ; ++i) {
-        scanf("%lf",&a[i]);
+    for (i = 0; i <n ; ++i) {
+        scanf("%d",&a[i]);
     }
-    int need=1;double tmp;
-    while (need)
-    {
-        need=0;
-        for (int i = 0; i < n-1; ++i) {
-            if (a[i]>a[i+1]) {tmp=a[i];a[i]=a[i+1];a[i+1]=tmp;need++;}
-        }
-    }
-    for (int i = 0; i < n; ++i) {
-        printf("%.5f\n",a[i]);
+    maopao(a,i);
+    for (i = 0; i <n ; ++i) {
+        printf("%d",a[i]);
     }
 
 }

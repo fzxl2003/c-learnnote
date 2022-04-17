@@ -1,26 +1,41 @@
-/*
- Author: 潘宇恒
- Result: AC	Submission_id: 4287410
- Created at: Fri Apr 08 2022 23:05:04 GMT+0800 (China Standard Time)
- Problem_id: 5538	Time: 16	Memory: 1736
-*/
-
+//H 全排列组合  https://accoding.buaa.edu.cn/contest-ng/index.html#/822/problems
 #include <stdio.h>
+#include <stdlib.h>
+int search[5]={0};
+int a[5]={0};
+int ssearch(int m)
+{
+    for (int i = 0; i < 5; ++i) {
+        if (search[i]==0) return m+i;
+    }
+    return -1;
+}
+void print(int l)
+{
+    for (int i = 0; i <= l; ++i) {
+        printf("%d ",a[i]);
+    }
+    printf("\n");
+}
+void pailie(int m,int n,int i)
+{int aa;
+    if (i==n+1)
+    { print(n-m);
+        return;}
+    for (int j = m; j <= n; j++) {
+        if (search[j-m]!=1){
+            a[i-m]=j;
+            //printf("%d ",j);
+            search[j-m]=1;
+            pailie(m,n,i+1);
+            search[j-m]=0;
+        }}
+}
 
 
-int main() {
-   long long a[11]={0},n,m;
-    scanf("%lld%lld", &n, &m);
-    if (n==0) a[0]++;
-    for (long long i = n; i <= m; i++) {
-        long long j = i;
-        while (j > 0) {
-            a[j % 10]++;
-            j /= 10;
-        }
-    }
-    for (long long i = 0; i <= 9; i++) {
-        printf("%lld ", a[i]);
-    }
+int main()
+{int m,n;
+    scanf("%d%d",&m,&n);  //生成m-n这些数的所有排列 ，m-n<=5
+    pailie(m,n,m);
 
 }
