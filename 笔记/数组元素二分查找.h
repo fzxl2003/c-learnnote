@@ -32,7 +32,7 @@
       else if (*a > *b) return 1;
       else return 0;  }
 
-二、下界二分查找
+二、升序数组中找第一个大于等于某个数的值
  lower_bound 在一个有序的序列中，找到第一个大于等于某个数的值
  1.条件：数组升序排列
  2.返回值：数组中从左到右第一个大于等于某值的下标
@@ -58,7 +58,7 @@ int lower_bound(int a[], int lo, int hi, int val) {
         在查找 的时候，那么我们此时返回的下标就是5
         在查找 的时候，那么我们此时返回的下标就是6
 
-三、upper_bound 上界二分查找
+三、upper_bound 升序数组中找第一个大于某个数的值
  upper_bound 在一个有序的序列中，找到第一个严格大于某个数的值
 1.条件：数组升序排列
 2.返回值：数组中从左到右第一个严格大于某值的数值的数组下标
@@ -85,8 +85,43 @@ int upper_bound(int a[], int lo, int hi, int val) {
 (这个下标不存在，他反应的就是数列里的所有数都不大于5 ，返回的是下标，所以也不需要担心数
 组越界)
 
+四.upper_bound 降序数组中找第一个小于某个数的值
+ upper_bound 在一个有序的序列中，找到第一个严格小于某个数的值
+1.条件：数组降序排列
+2.返回值：数组中从左到右第一个严格小于某值的数值的数组下标
+3.代码：
 
+    //a: 要查找的有序数组, 默认是从大到小排序
+    //lo, hi: 要查找的范围是从a[lo]到a[hi]之间(包含a[lo]和a[hi])
+    //val: 要查找的值
+    //返回的值: 找到的元素在数组a中的下标
+    //如果所有数都大于等于val,则返回hi+1
+int upper_bound(int a[], int lo, int hi, int val) {
+        if (val <= a[hi]) return hi + 1;
+        int mi = 0;
+        while (lo < hi) {
+            mi = (lo + hi) >> 1;
+            if (a[mi] >= val) lo = mi + 1;
+            else hi = mi;}
+        return lo;}
 
-
+五.upper_bound 降序数组中找第一个小于等于某个数的值
+ upper_bound 在一个有序的序列中，找到第一个小于等于某个数的值
+1.条件：数组降序排列
+2.返回值：数组中从左到右第一个小于等于某值的数值的数组下标
+3.代码：
+    //a: 要查找的有序数组, 默认是从大到小排序
+    //lo, hi: 要查找的范围是从a[lo]到a[hi]之间(包含a[lo]和a[hi])
+    //val: 要查找的值
+    //返回的值: 找到的元素在数组a中的下标
+    //如果所有数都大于等于val,则返回hi+1
+int upper_bound(int a[], int lo, int hi, int val) {
+        if (val < a[hi]) return hi + 1;
+        int mi = 0;
+        while (lo < hi) {
+            mi = (lo + hi) >> 1;
+            if (a[mi] > val) lo = mi + 1;
+            else hi = mi;}
+        return lo;}
 
  */

@@ -3,16 +3,19 @@
 
 int values[] = { 88, 56, 100, 2, 25 };
 
-int cmpfunc (const void * a, const void * b)
-{
-    return ( *(int*)a - *(int*)b );   //升序排列
+int cmp(const void* p1, const void* p2) {  //升序排列
+    int* a = (int*)p1, * b = (int*)p2;
+    if (*a < *b)return -1;
+    else if (*a > *b) return 1;
+    else return 0;
 }
 
-int cmpfunc1 (const void * a, const void * b)
-{
-    return ( *(int*)b - *(int*)a );   //降序排列
+int cmp1(const void* p1, const void* p2) {  //降序排列
+    int* a = (int*)p1, * b = (int*)p2;
+    if (*a > *b)return -1;
+    else if (*a < *b) return 1;
+    else return 0;
 }
-
 int main()
 {
     int n;
