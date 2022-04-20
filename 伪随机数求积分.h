@@ -16,7 +16,10 @@
 #include <time.h>
 #include <math.h>
 #include <stdlib.h>
-
+double hanshu(double x)
+{
+    return pow(2.718281828459,-1*(x+0.5)*(x+0.5));
+}
 int main() {
     double t,x,y,sum=0;int nn=1000000;
     scanf("%lf", &t);
@@ -24,7 +27,7 @@ int main() {
     for (int i = 0; i <nn; ++i) {
         x=rand()%10000;
         x=x/10000*t;  //生成0-1.5的随机数x
-        sum+= (pow(2.718281828459,-1*(x+0.5)*(x+0.5)))/nn;    //计算x对应的y的值并平均加和，当随机数足够多时，得到的即为函数面积
+        sum+= hanshu(x)/nn;    //计算x对应的y的值并平均加和，当随机数足够多时，得到的即为函数面积
     }
 
     printf("%f", pow(2.718281828459,-1*sum*t));

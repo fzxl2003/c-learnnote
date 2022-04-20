@@ -69,7 +69,7 @@
     size -- 数组中每个元素的大小，以字节为单位。
     compar -- 用来比较两个元素的函数
     比如：qsort(values, 5, sizeof(int), cmpfunc);
-     values为要排序的数组名，5代表要排前五个元素，sizeof(int)代表元素大小，cmpfunc为附加函数
+     values为要排序的数组名，5代表要排前五个元素，sizeof(int)代表元素大小,根据数组类型更改，cmpfunc为附加函数
   4.附加函数cmpfunc
      升序排列
         int cmp(const void* p1, const void* p2) {

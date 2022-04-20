@@ -13,6 +13,7 @@
 //long long int main5(long long a)   //高低位交换,前16位与后16位交换
 //void main7(long long a,int d[],int i)   //分离十进制数a的各位，存储在d[],调用时i=0
 //void a()                            //printf输出八进制/十六进制
+
 long long dectobin( int n ){     //十进制转二进制（除法）（输出longlong）
     long long k=1,i,temp;
     long long result=0;
@@ -59,18 +60,26 @@ long long mian1234(long long x,int n)  //提取二进制的特定位  //x为要�
 
 
 
-void mian3(int radix,int num)  //十进制转其他进制  //radix为进制  num为十进制数
-{    int arr[320] = {0},i=0;
-    if (num==0 ||radix==0) {printf("0\n");return;}     //排除特殊情况0
-    while(num){                              //整除取余
+void mian3(int radix,int num)//十进制转其他进制  //radix为进制  num为十进制数
+{
+
+    int arr[320] = {0},i=0,fuhao;
+    if (num<0) {fuhao=-1,num=-num;} else if (num==0) fuhao=0 ;
+    else fuhao=1;
+
+    while(num){
+
         arr[i] = num % radix;
         num /= radix;
         i++;
     }
+    if (fuhao==-1) putchar('-');
     while(i--){
-        if (arr[i]>=10){ putchar(arr[i]-10+'A');}  //倒序输出
+        if (arr[i]>=10){ putchar(arr[i]-10+'A');}
         else putchar(arr[i] + '0');
     }
+
+
 }
 void mian132(long long x)        //十进制转二进制（打印输出）(以int为例)
 {
