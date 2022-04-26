@@ -13,7 +13,7 @@
 //long long int main5(long long a)   //高低位交换,前16位与后16位交换
 //void main7(long long a,int d[],int i)   //分离十进制数a的各位，存储在d[],调用时i=0
 //void a()                            //printf输出八进制/十六进制
-
+//void xiaoshu2(double a)          //十进制小数转二进制小数（原码）
 long long dectobin( int n ){     //十进制转二进制（除法）（输出longlong）
     long long k=1,i,temp;
     long long result=0;
@@ -143,4 +143,26 @@ void a() {                           //printf输出八进制/十六进制
     printf("0%o\n", 10);    //printf输出八进制
     printf("0x%x\n", 10);  //printf输出十六进制
 
+}
+
+void xiaoshu2(double a)
+{
+   //double a=0.5;
+    int i=0;
+    printf("0.");
+    for(i=0; i<100; i++)
+    {
+        if(a*2>=1)
+        {
+            a=a*2-1;
+            printf("1");
+        }
+        else
+        {
+            a=a*2;
+            printf("0");
+        }
+    }
+    printf("\n");
+    return 0;
 }

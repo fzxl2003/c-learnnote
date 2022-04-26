@@ -49,7 +49,7 @@
 1.函数：memset()
 2.函数声明:void *memset(void *s,int ch,size_t n);
   void *s为将要改变的数据的地址（通常为数组）  ch为替换的数字  n为替换个数
-3.函数作用：将s中当前位置后面的n个字节用ch替换并返回s(指针),常用于清零
+3.函数作用：将s中当前位置后面的n个字节用ch替换并返回s(指针),常用于清零memset(a,0,sizeof(a))
 
 
 
