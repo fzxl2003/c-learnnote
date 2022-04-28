@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <ctype.h>
+//处理数据说明   每一行有多个以空格相隔开的数字，该代码以行为单位读取每个数字并处理
 char *get_value(char *s, double *d)
 {
     while(*s != '\0' && isspace(*s))
@@ -17,9 +18,8 @@ int main() {
     for (i = 1; fgets(buf, BUFSIZ, stdin) != NULL; i++) {     //读取第i行
         subsum = 0;
         for (n = 0, p = buf; (p = get_value(p, &d)) != NULL; n++)
-            subsum += d;
-        if (n > 0)
-            printf("%d:%d %f\n", i, n, subsum / n);
+            subsum += d;     //对读取到的数d的操作（此处是求和）
+        if (n > 0){}         //该行读取到数最后的操作
     }
     return 0;
 }

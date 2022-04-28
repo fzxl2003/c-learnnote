@@ -1,4 +1,14 @@
-/*
+
+
+
+
+
+//方法一：排序法，数据量相对较小，但每个数据较大（达到 量级），适合使用排序。
+//方法二：散列表法，适用于数据量大，但数据较小
+
+
+
+/*    方法一
  将所给的区间全部合并，并且返回一个不重叠的时间段数组t，t恰好覆盖所有的区间
  输入格式
   n+1行。
@@ -60,3 +70,62 @@ int main() {
     }
 
 }
+
+
+
+
+
+
+
+
+
+/*
+ 给出 n 个浮点数闭区间进行区间合并，将这些区间合并为不相交的闭区间。
+
+输入格式
+第一行，一个正整数 n，表示区间个数。
+接下来 n 行，每行包含两个以空格分隔的浮点数 min、max，表示红包区间 [min, max]，每个浮点数有且仅有两位小数。
+
+输出格式
+输出若干行，表示合并后的区间，每行包含两个以空格分隔的浮点数 left、right，表示区间 [left, right]，各区间按升序排列输出。
+ */
+
+
+
+
+
+#include <stdio.h>
+#include <math.h>
+
+#define MAX_N (1024*1024)
+int range[MAX_N];
+void print_zone()
+{
+    int i, n;
+    for(i=0;i<MAX_N;i++){
+        if(range[i]==0)
+            continue;
+        printf("%.2f ", 1.0*i/100);
+        for(n=range[i];i<=n;i++)
+            if(range[i] >n)
+                n = range[i];i--;
+        printf("%.2f\n", 1.0*i/100); }
+}
+
+
+
+int main(){
+    int a, b;double aa,bb;
+    scanf("%d",&a);
+    while(scanf("%lf%lf",&aa,&bb)== 2){
+        a=(int)round(aa*100);
+        b= (int)round(bb*100);
+        if(b>range[a])
+            range[a]=b;     //aa为左端点，b为右端点
+    }
+    print_zone();
+    return 0;
+}
+
+
+
