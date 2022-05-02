@@ -19,7 +19,7 @@ int main() {
         subsum = 0;
         for (n = 0, p = buf; (p = get_value(p, &d)) != NULL; n++)
             subsum += d;     //对读取到的数d的操作（此处是求和）
-        if (n > 0){}         //该行读取到数最后的操作
+        if (n > 0){}         //该行读取到最后一个数的最后的操作
     }
     return 0;
 }
