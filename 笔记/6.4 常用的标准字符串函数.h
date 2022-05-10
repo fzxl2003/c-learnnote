@@ -40,7 +40,7 @@
  见2.5
 
 
-  sscanf()
+  sscanf()    //可用于字符串转其他类型变量
 1.函数原型：
  int sscanf(const char *buffer,char *format [,argument]....);
  buffer为一个特定格式的字符串，保存等待分析读入的数据

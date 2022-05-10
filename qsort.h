@@ -16,6 +16,14 @@ int cmp1(const void* p1, const void* p2) {  //降序排列
     else if (*a < *b) return 1;
     else return 0;
 }
+struct data{int order;}list[3];
+int cmp3_order(const void* p1, const void* p2) {  //降序排列  //按结构体stu中的order元素排序
+    int* a = ((struct data *)p1)->order, * b = ((struct data *)p2)->order;
+    if (*a > *b)return -1;
+    else if (*a < *b) return 1;
+    else return 0;
+}
+//qsort(list,3,sizeof(struct data),cmp3_order )  //按结构体stu中的order元素排序
 int main()
 {
     int n;
