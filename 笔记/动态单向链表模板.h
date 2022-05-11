@@ -164,6 +164,12 @@ int main(){
     //printf("%d\n", pnodefind(list,3)->value);
     list=change(list,999,999);
     list=insert(list, 999,99);
+    list=insert(list, 999,99);
+    list=insert(list, 999,99);
+    list=insert(list, 999,99);
+    list=insert(list, 999,99);
+    list=insert(list, 999,99);
+    list=insert(list, 999,99);
     list=delete(list, 0);
     list=list_rev(list);
     print(list); //依次打印链表中的结点
