@@ -1,60 +1,43 @@
-
 #include <stdio.h>
 #include <stdlib.h>
-#include <string.h>
-
-int cmp(const void* p1, const void* p2) {  //升序排列
-    int* a = (int*)p1, * b = (int*)p2;
-    if (a[0] > b[0])return -1;
-    else if (a[0] < b[0]) return 1;
-    else return 0;
+#define ONEW 10000 // 宏定义，1万
+typedef struct {
+    long long num;
+    int pos;
+} Item; // 定义一个结构体Item，具有两个成员：数字num和其下标pos
+int r_cmp(const void *p1, const void *p2) {
+    Item *pp1 = (Item*)p1;
+    Item *pp2 = (Item*)p2;
+    if (pp1->num > pp2->num)
+        return 1;
+    else if (pp1->num < pp2->num)
+        return -1;
+    else
+        return pp1->pos - pp2->pos; // 在num相等的情况下，按照pos    的大小进行排序
 }
-int cmp1(const void* p1, const void* p2) {  //升序排列
-    int* a = (int*)p1, * b = (int*)p2;
-    if (a[1] < b[1])return -1;
-    else if (a[1] > b[1]) return 1;
-    else return 0;
-}
-int upper_bound(int a[][3], int lo, int hi, int val) {
-    if (val <= a[hi][0]) return hi + 1;
-    int mi = 0;
-    while (lo < hi) {
-        mi = (lo + hi) >> 1;
-        if (a[mi][0] >= val) lo = mi + 1;
-        else hi = mi;}
-    return lo;}
-int main()
-{
-    char str[20][1009]={0};
-    int leni[20][3]={0};
-    int lenmin=999999;int lenminn;
-    char str1[1009];int num=0;
-    while (gets(str1)!=NULL)
-    {
-
-        int len= strlen(str1);
-        if (num<20)
-        {strcpy(str[num],str1);
-            leni[num][0]=len;leni[num][1]=num;leni[num][2]=num;
-            if (len<lenmin) {lenmin=len;lenminn=num;}
-            num++;continue;
+int main() {
+    int a, c, seed, i, T;
+    long long m; // m要定义为long long
+    Item x[10005]; // 定义Item类型的数组变量x
+    while (scanf("%d%d%lld%d", &a, &c, &m, &seed) != EOF) {
+        x[0].num = seed;
+        x[0].pos = 0;
+        for (i = 1; i <= ONEW; i++) {
+            x[i].num = (a * x[i - 1].num + c) % m; // 线性同余公式
+            x[i].pos = i; // 下标i
         }
-        if (num==20){
-            qsort(leni,20,sizeof (leni[0]),cmp);
-            lenmin=leni[19][0];lenminn=leni[19][2];}
-        if (len>lenmin)
-        {
-            strcpy(str[leni[19][2]],str1);
-            leni[19][0]=len;leni[19][1]=num;
-            num++;
-            qsort(leni,20,sizeof (leni[0]),cmp);
-            lenmin=leni[19][0];lenminn=leni[19][2];
+        qsort(x, ONEW + 1, sizeof(x[0]), r_cmp); // 注意数据总数        为一万加一
+                T = -1;
+        for (i = 0; i < ONEW; i++) {
+            if (x[i].num == x[i + 1].num) {
+                T = x[i + 1].pos - x[i].pos; // pos成员直接相减得                到周期T
+                break;
+            }
         }
-        //qsort(leni,20,sizeof (leni[0]),cmp);
-
+        if (T == -1)
+            printf("T > 10^4\n");
+        else
+            printf("T = %d\n", T);
     }
-    qsort(leni,20,sizeof (leni[0]),cmp1);
-    for (int i = 0; i < 20; ++i) {
-        printf("%s\n",str[leni[i][2]]);
-    }
+    return 0;
 }
