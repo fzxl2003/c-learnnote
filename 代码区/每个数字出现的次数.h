@@ -1,4 +1,3 @@
-/*
  Author: 潘宇恒
  Result: AC	Submission_id: 4287410
  Created at: Fri Apr 08 2022 23:05:04 GMT+0800 (China Standard Time)
