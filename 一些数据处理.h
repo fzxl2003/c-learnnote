@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <math.h>
+#include <string.h>
 //long long dectobin( int n ){     //十进制转二进制（除法）（输出longlong）
 //int convertBinaryToDecimal(long long n) //二进制转十进制
 //long long mian123(long long a,int n,int x)  //替换二进制特定位的值  //a为要转化的数字，n为替换的值（0或1），x为位数
@@ -14,6 +15,7 @@
 //void main7(long long a,int d[],int i)   //分离十进制数a的各位，存储在d[],调用时i=0
 //void a()                            //printf输出八进制/十六进制
 //void xiaoshu2(double a)          //十进制小数转二进制小数（原码）
+//long long main1234(char *num ,int n)  //n进制转十进制（范围long long） //num为n进制数字的字符串，n为进制
 long long dectobin( int n ){     //十进制转二进制（除法）（输出longlong）
     long long k=1,i,temp;
     long long result=0;
@@ -41,6 +43,18 @@ int convertBinaryToDecimal(long long n) //二进制转十进制
 }
 
 
+long long main1234(char *num ,int n)  //n进制转十进制（范围long long） //num为n进制数字的字符串，n为进制
+{
+
+    int len=strlen(num);
+    long long numnum=0;
+    long long pow=1;
+    for (int i = len-1; i>=0; --i) {
+        numnum+=(pow*(num[i]-'0'));
+        pow*=n;
+    }
+    return numnum;
+};
 
 long long mian123(long long a,int n,int x)  //替换二进制特定位的值  //a为要转化的数字，n为替换的值（0或1），x为位数
 {

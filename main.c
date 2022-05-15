@@ -1,43 +1,56 @@
-#include <stdio.h>
 #include <stdlib.h>
-#define ONEW 10000 // 宏定义，1万
-typedef struct {
-    long long num;
-    int pos;
-} Item; // 定义一个结构体Item，具有两个成员：数字num和其下标pos
-int r_cmp(const void *p1, const void *p2) {
-    Item *pp1 = (Item*)p1;
-    Item *pp2 = (Item*)p2;
-    if (pp1->num > pp2->num)
-        return 1;
-    else if (pp1->num < pp2->num)
-        return -1;
-    else
-        return pp1->pos - pp2->pos; // 在num相等的情况下，按照pos    的大小进行排序
+#include <stdio.h>
+#include <math.h>
+#include <string.h>
+
+char a[10005], ans[10005], tem[10005];//储存余数的数组稍微开大一点
+void myatoi(char a[]) {//将字符转化为数字
+    int i;
+    for (i = 0; a[i] != 10 && a[i] != -1; i++);//读取字符长度
+
+    int a_len = i;//记录字符长度
+    for (i = 0; i < a_len; i++) {
+        a[i] -= '0';//通过减去0的ascii码来转换
+    }
 }
+
+int div_cal(char a[], int scale, char ans[]) {
+    int i = 0, j = 0, k = 0, res = 0, temp, begin;
+    while (1) {//每一轮计算后，可以选择去除前导零，该份代码未去除
+        k = 0, res = 0;
+        for (i = 0; a[i] != -1; i++) {
+            tem[i] = (res * 10 + a[i]) / scale;//整型相除
+            res = (res * 10 + a[i]) - tem[i] * scale;//计算余数留作下一位计算
+        }
+        ans[j++] = res;//将最后的余数记录在ans数组中
+        memcpy(a, tem, sizeof(a[0]) * (i + 5));//将tem数组复制到a数组
+        memset(tem, -1, sizeof(tem[0]) * (i + 5));//tem数组初始化
+        while (a[k] == 0) k++;
+        if (a[k] == -1)
+            break;
+    }
+    return j;
+}
+
 int main() {
-    int a, c, seed, i, T;
-    long long m; // m要定义为long long
-    Item x[10005]; // 定义Item类型的数组变量x
-    while (scanf("%d%d%lld%d", &a, &c, &m, &seed) != EOF) {
-        x[0].num = seed;
-        x[0].pos = 0;
-        for (i = 1; i <= ONEW; i++) {
-            x[i].num = (a * x[i - 1].num + c) % m; // 线性同余公式
-            x[i].pos = i; // 下标i
+    while (1) {//多组不定组数据输入
+        int scale = 4, i = 0, j = 0, k = 0;
+        memset(ans, -1, sizeof(ans)), memset(a, -1, sizeof(a)), memset(tem,
+                                                                       -1, sizeof(a));//初始化为-1
+        scanf("%s", a);
+        i = strlen(a);
+        if (a[0] == EOF) break;//读到结束符时，意味着没有更多输入数据了，直接跳出循环
+        a[i] = -1;
+        myatoi(a);//将字符转化为数字
+        j = div_cal(a, scale, ans);
+        for (i = j - 1; i >= 0; i--) {
+            if (ans[i] == 0 && k == 0 && ans[i + 1] != -1)
+                continue;//输出时消除前导零
+            k = 1;
+            printf("%c", ans[i] + '0');//打印结果
+
         }
-        qsort(x, ONEW + 1, sizeof(x[0]), r_cmp); // 注意数据总数        为一万加一
-                T = -1;
-        for (i = 0; i < ONEW; i++) {
-            if (x[i].num == x[i + 1].num) {
-                T = x[i + 1].pos - x[i].pos; // pos成员直接相减得                到周期T
-                break;
-            }
-        }
-        if (T == -1)
-            printf("T > 10^4\n");
-        else
-            printf("T = %d\n", T);
+        puts("");
     }
     return 0;
 }
