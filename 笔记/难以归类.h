@@ -20,7 +20,8 @@ x=（int)（(f+ DEALT)*100);，其中DEALT是一个略大于数据精度误差�
 
 3.math.h中的乘幂函数pow(double,double)不能输出过大但小于long long的数
 
-
+floor()  向下取整
+ double floor(double );
 
 
 
