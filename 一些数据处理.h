@@ -58,7 +58,7 @@ long long main1234(char *num ,int n)  //n进制转十进制（范围long long）
 
 long long mian123(long long a,int n,int x)  //替换二进制特定位的值  //a为要转化的数字，n为替换的值（0或1），x为位数
 {
-    if (n==1)
+    if (n==0)
         a &= (~(1 << x));   //将a的二进制第x位替换为0
     else  a|=(1<<x);        //将a的二进制第x位替换为1
     return a;
@@ -178,5 +178,5 @@ void xiaoshu2(double a)
         }
     }
     printf("\n");
-    return 0;
+    return ;
 }

@@ -34,7 +34,7 @@ int div_cal(char a[], int scale, char ans[]) {
 
 int main() {
     while (1) {//多组不定组数据输入
-        int scale = 4, i = 0, j = 0, k = 0;
+        int scale = 4, i = 0, j = 0, k = 0;   //scale为进制
         memset(ans, -1, sizeof(ans)), memset(a, -1, sizeof(a)), memset(tem,
                                                                        -1, sizeof(a));//初始化为-1
         scanf("%s", a);
