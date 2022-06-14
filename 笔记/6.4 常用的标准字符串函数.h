@@ -140,7 +140,7 @@
                 char a[]="123"    sizeof(a)返回4 strlen(a)返回3
                 char a[10]="123"  sizeof(a)返回10 strlen(a)返回3
 
- strchr()和strrstr()
+ strchr()和strrchr()
 1.函数原型：
   char *strchr(char *s,int c);
   char *strrchr(char *s,int c);

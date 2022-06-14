@@ -40,7 +40,7 @@
   特定数的特定位为1，其他位为0
   函数unsigned int mian4(unsigned int a1,int begin,int end)  //翻转特定位，从0位开始
     {
-    a1^=(((1<<(end-begin+1))具体代码见在成对数字中找单蹦.h-1)<<begin);
+    a1^=(((1<<(end-begin+1))-1)<<begin);
     return a1;
      }
  若特定数二进制均是1，相当于按位取反

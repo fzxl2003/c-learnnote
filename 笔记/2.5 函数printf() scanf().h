@@ -5,7 +5,7 @@ printf()
           ....为参数表，与字符串中的%一一对应
  3.printf()常用字段类型说明符  例2-8
  %d： － 以十进制方式输出带标记整数（正数默认不输出标记）； int 十进制
- %u： － 以十进制方式输出无标记整数；                   int 十进制
+ %u： － 以十进制方式输出无标记整数；                   unsigned int 十进制
  %x   — 以十六进制方式输出整数                        int 十六进制
  %o： － 以八进制方式输出整数                         int 八进制
  %f： － 以小数方式输出单、双精度实数；                 double 小数方式
@@ -16,7 +16,7 @@ printf()
 //%s对应的参数实质上是字符串第一个字符对应的指针，当printf输出到'\0'时停止输出该字符串
   详见字符串和字符数组.h
 %lld  -以十进制方式输入长整型 （linux系统）    long long
- %I64d -以十进制方式输入长整型 （windows系统）       long long
+ %I64d -以十进制方式输入长整型 （windows系统）(oj不用)       long long
  %llu  以十进制方式输出unsigned long long        unsigned long long
  4.完整的字段说明序列
  %[flags] [width] [.precision] type
